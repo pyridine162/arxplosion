@@ -1,0 +1,187 @@
+/* --- 基础设置 --- */
+/* 强制所有元素在计算宽度时包含边框和内边距，方便布局 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 整个网页的背景色和字体设置 */
+body {
+    background-color: #050505; /* 极深的黑色，比纯黑略有质感 */
+    color: #e0e0e0; /* 偏白色的灰色文字，避免纯白太刺眼 */
+    font-family: 'Courier New', Courier, monospace, 'Microsoft YaHei'; /* 优先使用等宽字体，显得严肃硬核 */
+    line-height: 1.6;
+    padding-bottom: 80px; /* 给底部留点空间，不让左下角按钮挡住内容 */
+}
+
+/* 去除所有超链接的默认下划线 */
+a {
+    text-decoration: none;
+    color: inherit; /* 链接颜色继承文字原本的颜色 */
+}
+
+/* --- 第一部分：头图轮播区域样式 --- */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 500px; /* 头图高度，可自行修改 */
+    margin: 0 auto; /* 居中显示 */
+    overflow: hidden; /* 隐藏超出容器的图片部分 */
+    border-bottom: 2px solid #333; /* 底部加一条深灰色硬核边框 */
+}
+
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    /* 添加平滑滑动的动画效果，0.5秒过渡 */
+    transition: transform 0.5s ease-in-out; 
+}
+
+.slide {
+    min-width: 100%; /* 每张图片占满整个宽度 */
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保证图片不变形，自动裁剪填充 */
+    filter: grayscale(80%); /* 【硬核风格】把图片变成80%黑白，如果不需要可以删掉这一行 */
+}
+
+/* 轮播图左右控制按钮 */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(50, 50, 50, 0.5); /* 半透明灰色 */
+    color: white;
+    border: 1px solid #555;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: all 0.3s;
+}
+
+.slider-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* --- 第二部分：四个并列方形按钮样式 --- */
+.square-nav {
+    display: flex;
+    justify-content: center; /* 按钮在页面居中排列 */
+    gap: 50px; /* 按钮之间的间距 */
+    max-width: 1200px;
+    margin: 40px auto; /* 上下外边距40px，左右自动居中 */
+    padding: 0 20px;
+}
+
+/* 方形按钮主体设计 */
+.square-btn {
+    flex: 1; /* 四个按钮平分宽度 */
+    aspect-ratio: 1 / 1; /* 强制长宽比为1:1，变成绝对的正方形 */
+    max-width: 150px; /* 最大不超过 150px */
+    background: rgba(131, 131, 131, 0.3); /* 灰色半透明背景 */
+    border: 1px solid #444; /* 灰色边框 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    letter-spacing: 2px; /* 文字间距加大，更显严肃 */
+    transition: all 0.3s ease; /* 动画过渡时间0.3秒 */
+}
+
+/* 【重点】方形按钮鼠标悬停时的动画效果 */
+.square-btn:hover {
+    background: rgba(255, 255, 255, 0.1); /* 背景变亮 */
+    border-color: #fff; /* 边框变白 */
+    color: #fff; /* 文字变白 */
+    transform: translateY(-5px); /* 按钮整体向上浮动 5px */
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2); /* 添加发光阴影效果 */
+}
+
+/* --- 第三部分：横向剧情栏目样式 --- */
+.story-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    border-bottom: 1px dashed #555; /* 虚线底边 */
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+/* 剧情横条设计 */
+.story-bar {
+    display: block; /* 使得超链接变成块级元素，可以设置宽高 */
+    background: rgba(128, 128, 128, 0.05);
+    border-left: 4px solid #555; /* 左侧加粗的灰色边框，硬核排版常见手法 */
+    padding: 30px;
+    margin-bottom: 20px; /* 每个剧情栏目的上下间隔 */
+    transition: all 0.3s ease;
+}
+
+.story-bar h3 {
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.story-bar p {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* 剧情横条悬停效果 */
+.story-bar:hover {
+    background: rgba(128, 128, 128, 0.15);
+    border-left-color: #fff; /* 左侧边框变白 */
+    transform: scale(1.02); /* 整体放大一点点 */
+}
+
+/* --- 第四部分：左下角 关于作者 按钮样式 --- */
+.author-container {
+    position: fixed; /* 固定在屏幕某个位置，不随页面滚动 */
+    bottom: 20px; /* 距离底部 20px */
+    left: 20px; /* 距离左侧 20px */
+    z-index: 100; /* 确保不被其他元素遮挡 */
+}
+
+.author-btn {
+    background: transparent;
+    border: 1px solid #555;
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.author-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+/* --- 手机端适配 --- */
+/* 当屏幕宽度小于 600px 时执行这里的代码 */
+@media (max-width: 600px) {
+    .square-nav {
+        flex-wrap: wrap; /* 允许换行 */
+    }
+    .square-btn {
+        min-width: 40%; /* 手机上变成两行两列 */
+        margin-bottom: 10px;
+    }
+}

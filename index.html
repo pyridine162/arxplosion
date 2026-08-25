@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界观设定集</title>
+    <!-- 引入我们自己写的外部 CSS 样式表 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 第一部分：最上方的头图轮播区域 -->
+    <header class="slider-container">
+        <!-- 存放所有图片的容器 -->
+        <div class="slider-wrapper" id="sliderWrapper">
+            <!-- 图片1：将 src 里的链接换成你本地的图片，比如 src="images/header1.jpg" -->
+            <div class="slide"><img src="https://via.placeholder.com/1200x400/111111/ffffff?text=Header+Image+1" alt="头图1"></div>
+            <!-- 图片2 -->
+            <div class="slide"><img src="https://via.placeholder.com/1200x400/222222/ffffff?text=Header+Image+2" alt="头图2"></div>
+            <!-- 图片3 -->
+            <div class="slide"><img src="https://via.placeholder.com/1200x400/333333/ffffff?text=Header+Image+3" alt="头图3"></div>
+            <!-- 如果想加第4张图，直接在这里复制一行上面的代码即可 -->
+        </div>
+        <!-- 轮播图的左右切换按钮 -->
+        <button class="slider-btn prev-btn" onclick="prevSlide()">&#10094;</button>
+        <button class="slider-btn next-btn" onclick="nextSlide()">&#10095;</button>
+    </header>
+
+    <!-- 第二部分：中间的四个方形按钮区域 -->
+    <!-- 想要跳转子页面，只需要修改 href="" 里的链接，比如换成 href="world.html" -->
+    <nav class="square-nav">
+        <!-- 第一个按钮 -->
+        <a href="sub-page.html" class="square-btn">
+            <span class="btn-text">世界概览</span>
+        </a>
+        <!-- 第二个按钮 -->
+        <a href="sub-page.html" class="square-btn">
+            <span class="btn-text">人物档案</span>
+        </a>
+        <!-- 第三个按钮 -->
+        <a href="sub-page.html" class="square-btn">
+            <span class="btn-text">百科全书</span>
+        </a>
+        <!-- 第四个按钮 -->
+        <a href="sub-page.html" class="square-btn">
+            <span class="btn-text">画廊</span>
+</span>
+        </a>
+    </nav>
+
+    <!-- 第三部分：横向排列的剧情栏目区域 -->
+    <section class="story-section">
+        <h2 class="section-title">编年史录</h2>
+        
+        <!-- 剧情一：模块化代码，这代表一个长条形按钮/栏目 -->
+        <a href="sub-page.html" class="story-bar">
+            <h3>外传·小说：虹都碎梦</h3>
+            <p>我做了一场逃离的梦</p>
+        </a>
+    </section>
+
+    <!-- 第四部分：左下角的“关于作者”按钮 -->
+    <div class="author-container">
+        <a href="sub-page.html" class="author-btn">关于作者</a>
+    </div>
+
+    <!-- 引入我们自己写的外部 JavaScript 脚本，用于实现轮播图功能 -->
+    <script src="script.js"></script>
+</body>
+</html>
