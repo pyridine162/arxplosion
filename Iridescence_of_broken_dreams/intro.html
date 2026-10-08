@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>写在前面</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+    .character_title {
+        max-width: 1000px;  
+        padding: 0px;
+        margin: 0 auto 0 auto;
+        font-size: 1.15rem;
+        line-height: 1;
+        text-indent: 2em;
+    }
+    .character_body {
+        font-family: "微软雅黑", "KaiTi", serif;
+        font-size: 0.85rem;      
+        font-weight: 400;        
+        line-height: 2;          
+        letter-spacing: 0.05em;  
+    }
+    .character_intro {
+        font-family: "微软雅黑", "KaiTi", serif;
+        font-size: 0.8rem;      
+        font-weight: 400;        
+        line-height: 2;          
+        letter-spacing: 0.05em;  
+        opacity: 0.9
+    }
+    </style>
+</head>
+
+
+<!-- 注意 body 上加了 reader-mode 类名 -->
+<body class="reader-mode">
+
+    <!-- 【固定的左侧目录】 (每个文件里都要保留这块目录) -->
+    <aside class="sidebar">
+        <a href="/home.html" style="color:#aaa;">← 返回枢纽</a>
+        <h2 class="book-title">虹都碎梦</h2>
+        <ul class="toc-list">
+            <!-- 注意：这里的链接直接写物理文件的名字 -->
+            <li><a href="intro.html" class="toc-link">写在前面</a></li>
+            <li><a href="novel-ch1.html" class="toc-link">第一章 虹城特快线</a></li>
+            <li><a href="novel-ch2.html" class="toc-link">第二章 漫长的假期</a></li>
+            <li><a href="novel-ch3.html" class="toc-link">第三章 铁轨与青草地</a></li>
+            <li><a href="novel-ch4.html" class="toc-link">第四章 体面的终结</a></li>
+            <li><a href="novel-ch5.html" class="toc-link">第五章 福尔马林和鱼</a></li>
+            <li><a href="novel-ch6.html" class="toc-link">后日谈 毕业季</a></li>
+        </ul>
+    </aside>
+
+    <!-- 【右侧滚动阅读区】 -->
+    <main class="reader-area" id="readerArea">
+        
+        <!-- 👇 这里是当前文件的真正内容 👇 -->
+        <!-- data-url 用于告诉程序当前是哪个文件 -->
+        <article class="chapter" data-url="intro.html">
+            <!-- 头图 -->
+            <div class="auto-height-header">
+                <!-- 将 src 的链接换成你每章不同的头图。因为设置了 height: auto，它有多长就会撑开多长 -->
+                <img src="/images/霓虹星球总视图.png" alt="章节头图">
+                
+                <!-- 渐变和标题放在遮罩层里 -->
+                <div class="header-overlay">
+                    <h1>插图仍在持续完善中！</h1>
+                </div>
+            </div>
+            <!-- 正文 -->
+            <div class="chapter-content">
+                <h2>写在前面</h2>
+                <p>大概是在去年的初夏，我决定动笔以小说的方式写下这一段剧情，作为原创作品系列的前（外？）传。经历各种删删改改，全文加上后日谈，最后的总长为10w字左右。</p>
+                <p>”霓虹星球“固然是属于上一个世代的故事。但是仅使用寥寥数个画面带过，又不免觉得很可惜。那么对此如何选用恰当的表达载体呢？我构想过漫画和视觉小说。为了缩短制作时间，最后选择了回忆录形式的文字。然而事实上最终花费的时间仍然远超出预期，大概是因为我没有保留写故事的习惯，遑论一上来就是中长篇幅（笑）。</p>
+                <p>去幻想一个“在我们出生以前”的所谓黄金时代，恐怕必然存在各种不真切的噪点；想要了解那时人们的感情，也只能挖掘从废墟传来的只言片语。但是，即便亲身所处时代正中的人们，可能也会同样看不真切，大都会的身躯可能被拉得很高很高，舞台也延伸至无限长。</p>
+                <p>以下故事的背景，距离“了无生气的现代”，尚有约30年的时间。如果放在地球世界的话，大概可以对标上世纪80-90年代。自然地，其中包含着我对彼时流行之物的种种看法；以及，我所喜爱的音乐，和无法忘记的人。</p>
+                <p>最后，感谢大家的观看！</p>
+
+                <!-- 人物介绍板块-->
+                <h2 style="margin-top: 30px; margin-bottom: 15px;">登场人物介绍</h2>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; width: 100%; box-sizing: border-box; margin-bottom: 30px; text-indent:0">
+                     
+                   
+
+                    <!-- Flint -->
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; box-sizing: border-box; min-width: 0;">
+                        <img src="/images/intro_Flint.png" alt="头像" style="width: 180px; height: 200px; object-fit: cover; flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <h4 class="character_title">Flint</h4>
+                            <div class="character_body">"霓虹星球”的贝斯手</div>
+                            <div class="character_intro">
+                                对现代艺术十分热情
+    
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Azure -->
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; box-sizing: border-box; min-width: 0;">
+                        <img src="/images/intro_Azure.png" alt="头像" style="width: 180px; height: 200px; object-fit: cover; flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <h4 class="character_title">Azure</h4>
+                            
+                            <div class="character_body">"霓虹星球”的吉他手和主唱</div>
+                            <div class="character_intro">
+                                似乎有些悲观
+    
+                            </div>
+                        </div>
+                    </div>
+                    <!-- lime -->
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; box-sizing: border-box; min-width: 0;">
+                        <img src="/images/intro_lime.png" alt="头像" style="width: 180px; height: 200px; object-fit: cover; flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <h4 class="character_title">lime</h4>
+                            <div class="character_intro">"霓虹星球”的键盘手</div>
+                            <div class="character_intro">
+                                希望大家能快乐相处
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Rusty -->
+                    <div style="display: flex; align-items: center; gap: 10px; padding: 10px; border-radius: 8px; box-sizing: border-box; min-width: 0;">
+                        <img src="/images/intro_Rusty.png" alt="头像" style="width: 180px; height: 200px; object-fit: cover; object-fit: cover; flex-shrink: 0;">
+                        <div style="flex: 1; min-width: 0;">
+                            <h4 class="character_title">Rusty</h4>
+                            <div class="character_intro">"霓虹星球”的鼓手</div>
+                            <div class="character_intro">
+                              "发生什么事了？"
+    
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- 👆 人物介绍板块 结束 👆 -->
+
+            </div>
+
+        </article>
+
+        <!-- 👇 核心机关：拉到这里会自动加载下一章 👇 -->
+        <!-- data-next 填写下一章的文件名 -->
+        <div class="scroll-trigger" data-next="novel-ch1.html">
+            <span>继续下拉加载：第一章...</span>
+        </div>
+
+    </main>
+
+    <!-- 引入阅读器专属脚本 -->
+    <script src="reader.js"></script>
+    
+</body>
+</html>

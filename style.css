@@ -25,8 +25,8 @@ a {
 .slider-container {
     position: relative;
     width: 100%;
-    max-width: 1200px;
-    height: 500px; /* 头图高度，可自行修改 */
+    max-width: 1000px;
+    height: 300px; /* 头图高度，可自行修改 */
     margin: 0 auto; /* 居中显示 */
     overflow: hidden; /* 隐藏超出容器的图片部分 */
     border-bottom: 2px solid #333; /* 底部加一条深灰色硬核边框 */
@@ -49,7 +49,6 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover; /* 保证图片不变形，自动裁剪填充 */
-    filter: grayscale(80%); /* 【硬核风格】把图片变成80%黑白，如果不需要可以删掉这一行 */
 }
 
 /* 轮播图左右控制按钮 */
@@ -73,6 +72,7 @@ a {
 
 .prev-btn { left: 10px; }
 .next-btn { right: 10px; }
+/* --- 子页面头图样式 --- */
 
 /* --- 第二部分：四个并列方形按钮样式 --- */
 .square-nav {
@@ -124,7 +124,7 @@ a {
     color: #ccc;
 }
 
-/* 剧情横条设计 */
+/* 设计 */
 .story-bar {
     display: block; /* 使得超链接变成块级元素，可以设置宽高 */
     background: rgba(128, 128, 128, 0.05);
@@ -132,6 +132,15 @@ a {
     padding: 30px;
     margin-bottom: 20px; /* 每个剧情栏目的上下间隔 */
     transition: all 0.3s ease;
+    position: relative; /* 让里面的图片能以这个方框为基准进行绝对定位 */
+    overflow: hidden;   /* 如果图片超过方框大小，直接切除超出的部分，保持按钮是方正的 */
+}
+
+.story-bar h3,
+.story-bar p {
+    position: relative; /* 核心：开启相对定位，z-index 才会生效 */
+    z-index: 2;        /* 核心：层级设为 2，高于图片的 z-index: 1 */
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.8); /* 文字加阴影，防止背景图太亮看不清 */
 }
 
 .story-bar h3 {
@@ -141,7 +150,7 @@ a {
 
 .story-bar p {
     font-size: 0.9rem;
-    color: #888;
+    color: #ccc; /* 建议颜色稍微调亮一点，原来 #888 在图片上会偏暗 */
 }
 
 /* 剧情横条悬停效果 */
@@ -184,4 +193,179 @@ a {
         min-width: 40%; /* 手机上变成两行两列 */
         margin-bottom: 10px;
     }
+}
+
+/* 鼠标悬浮出现图片*/
+.hover-bg-img {
+    position: absolute; /* 绝对定位，脱离文档流，不占用排版空间 */
+    top: 0;
+    left: 0;
+    width: 100%;        /* 宽度填满按钮 */
+    height: 100%;       /* 高度填满按钮 */
+    object-fit: cover;  /* 自动裁剪图片，保证图片不变形填满方框 */
+    
+    opacity: 0;         /* 初始透明度为0（完全看不见） */
+    transition: opacity 0.5s ease; /* 动画属性：透明度变化时，耗时0.5秒，平滑过渡 */
+    
+    z-index: 1;         /* 图片层级设定为 1 */
+    filter: brightness(60%) grayscale(50%); /* 【硬核风格小技巧】：降低图片亮度和加一点黑白滤镜，防止背景图太亮导致文字看不清 */
+}
+
+/* 2. 当鼠标悬停在按钮上时，改变图片的透明度 */
+.square-btn:hover .hover-bg-img,
+.story-bar:hover .hover-bg-img {
+    opacity: 1;
+}
+
+/* 3. 确保文字始终浮在图片上面，不会被图片盖住 */
+.btn-text {
+    position: relative; 
+    z-index: 2;         /* 文字的层级为 2，大于图片的 1，所以文字在上 */
+    color: #e0e0e0;
+    transition: color 0.3s;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.8); /* 给文字加一圈黑色黑色阴影，保证在任何图片背景下都清晰可见 */
+}
+
+/* 鼠标悬停时文字变纯白 */
+.square-btn:hover .btn-text {
+    color: #fff;
+}
+
+/* ================= 阅读器专属布局 ================= */
+body.reader-mode {
+    display: flex;
+    height: 100vh;
+    overflow: hidden; /* 锁死全屏滚动，改为右侧独立滚动 */
+    background-color: #000;
+    margin: 0;
+}
+
+/* 左侧目录侧边栏 */
+.sidebar {
+    width: 280px;
+    background: #0a0a0a;
+    border-right: 1px solid #222;
+    padding: 30px 20px;
+    overflow-y: auto;
+}
+.sidebar .book-title {
+    color: #fff;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #444;
+}
+.toc-list {
+    list-style: none;
+    padding: 0;
+}
+.toc-link {
+    display: block;
+    color: #777;
+    padding: 10px 0;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.toc-link:hover { color: #ccc; }
+/* 当前正在阅读的文档高亮样式 */
+.toc-link.active {
+    color: #fff;
+    font-weight: bold;
+    padding-left: 15px;
+    border-left: 3px solid #fff;
+}
+
+/* 右侧阅读区域 */
+.reader-area {
+    flex: 1;
+    overflow-y: auto; /* 允许右侧滚动 */
+    scroll-behavior: smooth;
+}
+
+/* 每一篇文档（章节）的外框 */
+.chapter {
+    max-width: 800px;
+    margin: 0 auto 50px auto; /* 底部留白 */
+    background: #111;
+    border-bottom: 1px solid #333;
+}
+
+/* 渐变头图 */
+.chapter-header {
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    background-size: cover;
+    background-position: center;
+}
+.chapter-header h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,1);
+    margin: 0;
+}
+
+/* 正文 */
+.chapter-content {
+    padding: 40px;
+    color: #bbb;
+    font-size: 1.15rem;
+    line-height: 2;
+}
+
+.chapter-content p {
+    text-indent: 2em;
+    margin-bottom: 25px;
+}
+
+/* 👇 底部留出一段距离，触发加载下一章的区域 👇 */
+.scroll-trigger {
+    height: 200px; /* 留出 200px 的下拉距离 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+}
+
+
+/* ================= 子页面专属头图 (高度自适应) ================= */
+.auto-height-header {
+    position: relative; /* 建立坐标系，让遮罩层可以定位 */
+    width: 100%;
+    /* ⚠️注意：这里绝对不能写 height，让里面的 img 自己撑开它！ */
+    border-bottom: 1px solid #333;
+}
+
+/* 真实的头图照片 */
+.auto-height-header img {
+    width: 100%;   /* 宽度强制 100% 撑满容器 */
+    height: auto;  /* 高度自动！不同尺寸的图片会自动缩放，绝不会被裁剪或变形 */
+    display: block; /* 消除 HTML 原生图片底部的 3px 幽灵空白缝隙 */
+}
+
+/* 覆盖在图片上面的渐变遮罩和文字容器 */
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* 依然保留硬核的底部纯黑渐变，以便让标题文字看得很清楚 */
+    background-image: linear-gradient(to top, #111 0%, rgba(17, 17, 17, 0) 60%);
+    
+    /* 弹性布局：让标题文字乖乖沉到最底下 */
+    display: flex;
+    align-items: flex-end; 
+    padding: 30px; /* 文字距离边框的距离 */
+}
+
+/* 头图上的大标题 */
+.header-overlay h1 {
+    color: #fff;
+    font-size: 2.2rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,1); /* 强烈黑色阴影防看不清 */
+    margin: 0;
 }

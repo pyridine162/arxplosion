@@ -1,0 +1,81 @@
+<style>
+   
+    body {
+        background-color: #000000; /* 纯黑色背景 */
+        margin: 0; /* 清除浏览器默认白边 */
+    }
+
+    .page-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .content-body {
+        width: 100%;
+        max-width: 600px;
+        padding: 40px;
+        /* 方框的背景色*/
+        background: rgba(20, 20, 20, 0.8); 
+        border: 1px solid #333;
+        text-align: center;
+    }
+
+    .page-title {
+        font-size: 2.2rem;
+        color: #fff;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed #555;
+        letter-spacing: 2px;
+    }
+
+    .contact-info {
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 15px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+
+    .back-btn {
+        /* 控制位置的代码 */
+        position: fixed; /* 固定在屏幕上，即使页面滚动它也不动 */
+        bottom: 30px;    /* 距离屏幕底部的距离 */
+        left: 30px;      /* 距离屏幕左侧的距离 */
+        z-index: 100;    /* 确保按钮在最上层，不会被别的元素挡住 */
+
+        /* 控制大小的代码 */
+        padding: 12px 24px; /* 上下内边距12px，左右内边距24px。改大这个数字，按钮就会变大 */
+        font-size: 1rem;    /* 按钮里文字的大小 */
+
+        /* 外观代码 */
+        display: inline-block;
+        border: 1px solid #555;
+        color: #aaa;
+        text-decoration: none; /* 去除超链接的下划线 */
+        transition: all 0.3s;  /* 悬停动画过渡时间 */
+    }
+    
+    .back-btn:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
+    }
+</style>
+
+<!-- 网页结构 -->
+<div class="page-wrapper">
+    <div class="content-body">
+        <h1 class="page-title">pyridine</h1>
+        <p class="contact-info">QQ：438213998</p>
+        <p class="contact-info">bilibili: @pyridine_</p>
+        <p class="contact-info">小红书: @pyridine</p>
+        <p class="contact-info">X: @pyridine16</p>
+    </div>
+</div>
+
+<!-- 【重点】把返回按钮从 content-body 里面拿了出来，放到外面 -->
+<a href="home.html" class="back-btn">← 返回枢纽</a>
